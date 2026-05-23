@@ -21,13 +21,13 @@ export default function Hero() {
           transition={{ duration: 0.65, ease }}
         >
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[11px] font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[11px] font-semibold tracking-widest uppercase whitespace-nowrap">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
             Plataforma IA para empresas
           </div>
 
           {/* H1 */}
-          <h1 className="text-[clamp(2.55rem,5vw,4.6rem)] font-extrabold tracking-[-0.03em] leading-[0.96] text-[#0b1420] mb-6">
+          <h1 className="text-[clamp(2.2rem,5vw,4.6rem)] font-extrabold tracking-[-0.03em] leading-[0.96] text-[#0b1420] mb-6">
             Tu empresa<br />
             <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
               aumentada
@@ -59,10 +59,10 @@ export default function Hero() {
           </div>
 
           {/* Proof row */}
-          <dl className="grid grid-cols-3 border border-[#e2eaf3] rounded-xl overflow-hidden bg-white/70 backdrop-blur-sm">
+          <dl className="flex flex-col sm:flex-row sm:divide-x divide-[#e2eaf3] border border-[#e2eaf3] rounded-xl overflow-hidden bg-white/70 backdrop-blur-sm">
             {PROOF.map((p, i) => (
-              <div key={i} className={`px-4 py-4 ${i < PROOF.length - 1 ? 'border-r border-[#e2eaf3]' : ''}`}>
-                <dt className="text-[0.98rem] font-bold tracking-tight text-[#0f1a2b] mb-0.5">{p.stat}</dt>
+              <div key={i} className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-0 px-5 py-4 border-b sm:border-b-0 last:border-b-0 border-[#e2eaf3]">
+                <dt className="text-[1.05rem] font-bold tracking-tight text-[#0f1a2b] sm:mb-0.5 min-w-[4rem]">{p.stat}</dt>
                 <dd className="text-[11px] text-[#6b7f96] leading-snug m-0">{p.label}</dd>
               </div>
             ))}

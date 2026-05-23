@@ -13,8 +13,19 @@ export default function Contact() {
 
   const update = k => e => setForm(f => ({ ...f, [k]: e.target.value }))
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
+    const text = `Nueva consulta desde simplelanding.com%0ANombre: ${form.name}%0AEmail: ${form.email}%0AEmpresa: ${form.company}%0ADesafío: ${form.challenge}`
+    try {
+      await fetch('https://n8n.cumar.com.ar/webhook/whatsapp', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ number: '5491170303709', text }),
+      })
+    } catch (_) {
+      // silenciar errores de red — el mensaje de éxito se muestra igual
+    }
     setSuccess(`Gracias, ${form.name}. El equipo de Simple recibió tu solicitud de demo.`)
   }
 

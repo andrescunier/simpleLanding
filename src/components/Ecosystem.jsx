@@ -1,43 +1,56 @@
 import { motion } from 'framer-motion'
 
-const MODULES = [
-  'Ventas', 'Soporte', 'Cobranza', 'Onboarding', 'Reportes', 'Logística',
-  'Proveedores', 'RR.HH.', 'Marketing', 'Inventario', 'Facturación',
-  'Compras', 'Post-venta', 'Mesa de Ayuda', 'Finanzas', 'Auditoría',
+const CATEGORIES = [
+  {
+    icon: '⚡',
+    label: 'Módulos',
+    color: 'border-blue-400/30 bg-blue-500/[0.04]',
+    dot: 'bg-blue-500',
+    badgeCls: 'border-blue-200 bg-blue-50 text-blue-700 hover:border-blue-300 hover:bg-blue-100',
+    items: [
+      'Ventas', 'Soporte', 'Cobranza', 'Onboarding', 'Reportes', 'Logística',
+      'Proveedores', 'RR.HH.', 'Marketing', 'Inventario', 'Facturación',
+      'Compras', 'Post-venta', 'Mesa de Ayuda', 'Finanzas', 'Auditoría',
+    ],
+  },
+  {
+    icon: '📡',
+    label: 'Canales',
+    color: 'border-emerald-400/30 bg-emerald-500/[0.04]',
+    dot: 'bg-emerald-500',
+    badgeCls: 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:border-emerald-300 hover:bg-emerald-100',
+    items: [
+      'WhatsApp', 'Instagram', 'Facebook Messenger', 'Telegram', 'SMS',
+      'Email', 'Web Chat', 'Voz', 'Formularios', 'Mercado Libre',
+      'Amazon', 'Correo Argentino', 'OCA', 'Andreani', 'TikTok',
+      'LinkedIn', 'Slack', 'Microsoft Teams',
+    ],
+  },
+  {
+    icon: '🔗',
+    label: 'Integraciones',
+    color: 'border-violet-400/30 bg-violet-500/[0.04]',
+    dot: 'bg-violet-500',
+    badgeCls: 'border-violet-200 bg-violet-50 text-violet-700 hover:border-violet-300 hover:bg-violet-100',
+    items: [
+      'Tango Gestión', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre',
+      'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify',
+      'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic',
+    ],
+  },
+  {
+    icon: '🧠',
+    label: 'Modelos de IA',
+    color: 'border-cyan-400/30 bg-cyan-500/[0.04]',
+    dot: 'bg-cyan-500',
+    badgeCls: 'border-cyan-200 bg-cyan-50 text-cyan-700 hover:border-cyan-300 hover:bg-cyan-100',
+    items: [
+      'GPT-4o', 'o3', 'Claude 3.7 Sonnet', 'Claude 3.5 Haiku',
+      'Gemini 2.0 Flash', 'Gemini 1.5 Pro', 'Grok 2', 'Grok 3',
+      'Llama 3.3', 'Mistral Large', 'Command R+', 'DeepSeek V3',
+    ],
+  },
 ]
-
-const CHANNELS = [
-  'WhatsApp', 'Instagram', 'Facebook Messenger', 'Telegram', 'SMS',
-  'Email', 'Web Chat', 'Voz', 'Formularios', 'Mercado Libre',
-  'Amazon', 'Correo Argentino', 'OCA', 'Andreani', 'TikTok',
-  'LinkedIn', 'Slack', 'Microsoft Teams',
-]
-
-const INTEGRATIONS = [
-  'Tango Gestión', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre',
-  'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify',
-  'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic',
-]
-
-const MODELS = [
-  'GPT-4o', 'o3', 'Claude 3.7 Sonnet', 'Claude 3.5 Haiku',
-  'Gemini 2.0 Flash', 'Gemini 1.5 Pro', 'Grok 2', 'Grok 3',
-  'Llama 3.3', 'Mistral Large', 'Command R+', 'DeepSeek V3',
-]
-
-const BadgeRow = ({ items, light }) =>
-  items.map(item => (
-    <span
-      key={item}
-      className={`h-9 px-4 inline-flex items-center rounded-full border text-sm font-medium cursor-default transition-all ${
-        light
-          ? 'border-transparent bg-[#e8eef6] text-[#6b7f96] text-[0.8rem]'
-          : 'border-[#e2eaf3] bg-white text-[#3c4f65] shadow-sm hover:border-gray-300 hover:shadow-md'
-      }`}
-    >
-      {item}
-    </span>
-  ))
 
 export default function Ecosystem() {
   return (
@@ -64,42 +77,37 @@ export default function Ecosystem() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="space-y-7"
-        >
-          <div>
-              <p className="text-[10px] font-bold text-[#6b7f96] uppercase tracking-[0.1em] mb-3">Módulos</p>
-            <div className="flex flex-wrap gap-2">
-              <BadgeRow items={MODULES} />
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {CATEGORIES.map((cat, i) => (
+            <motion.div
+              key={cat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={`rounded-2xl border p-6 ${cat.color}`}
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="text-xl leading-none">{cat.icon}</span>
+                <span className="text-[11px] font-bold text-[#3c4f65] uppercase tracking-[0.1em]">{cat.label}</span>
+                <span className="ml-auto text-[10px] text-[#9baab8] font-medium">{cat.items.length} disponibles</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {cat.items.map(item => (
+                  <span
+                    key={item}
+                    className={`px-3 py-1 rounded-full border text-[0.78rem] font-medium cursor-default transition-all ${cat.badgeCls}`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          <div>
-            <p className="text-[10px] font-bold text-[#6b7f96] uppercase tracking-[0.1em] mb-3">Canales</p>
-            <div className="flex flex-wrap gap-2">
-              <BadgeRow items={CHANNELS} />
-            </div>
-          </div>
-
-          <div>
-            <p className="text-[10px] font-bold text-[#6b7f96] uppercase tracking-[0.1em] mb-3">Integraciones</p>
-            <div className="flex flex-wrap gap-2">
-              <BadgeRow items={INTEGRATIONS} light />
-            </div>
-          </div>
-
-          <div>
-            <p className="text-[10px] font-bold text-[#6b7f96] uppercase tracking-[0.1em] mb-3">Modelos de IA</p>
-            <div className="flex flex-wrap gap-2">
-              <BadgeRow items={MODELS} light />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
 }
+
