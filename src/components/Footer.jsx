@@ -1,16 +1,17 @@
+import { useLang } from '../i18n'
+import FlowBackdrop from './FlowBackdrop'
+import BrandLogo from './BrandLogo'
+
 export default function Footer() {
+  const { t } = useLang()
+
   return (
-    <footer className="border-t border-[#e2eaf3] bg-white">
-      <div className="max-w-[1160px] mx-auto px-5 h-16 flex items-center justify-between gap-6">
-        <div className="flex items-center gap-2 opacity-80">
-          <span className="relative w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 via-cyan-400 to-sky-200">
-            <span className="absolute inset-[6px] rounded-full bg-white/90" />
-            <span className="absolute inset-[10px] rounded-full bg-cyan-300" />
-          </span>
-          <span className="text-[0.82rem] font-extrabold tracking-[0.12em] text-[#0f1a2b]">SIMPLE</span>
-        </div>
-        <p className="text-[0.84rem] text-[#6b7f96] m-0">
-          Simple &copy; 2025 &middot; Tu empresa aumentada por IA
+    <footer className="relative overflow-hidden border-t border-border bg-white">
+      <FlowBackdrop variant="light" opacity={0.18} />
+      <div className="relative z-[1] max-w-[1080px] mx-auto px-4 sm:px-6 py-5 sm:py-0 sm:h-[4.5rem] flex flex-col sm:flex-row items-center justify-between gap-3">
+        <BrandLogo size="sm" className="opacity-85" />
+        <p className="text-sm text-text-muted m-0 text-center sm:text-right">
+          Simple &copy; 2026 · {t.footer.tagline}
         </p>
       </div>
     </footer>

@@ -1,75 +1,91 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { useLang } from '../i18n'
+import SectionHeader from './ui/SectionHeader'
+import Card from './ui/Card'
+import ConnectionFlow from './ConnectionFlow'
+import FlowBackdrop from './FlowBackdrop'
 
-const STEPS = [
-  {
-    n: '01',
-    title: 'Conectar',
-    body: 'Unificamos todos tus canales de comunicación y sistemas de negocio en una sola plataforma.',
-  },
-  {
-    n: '02',
-    title: 'Comprender',
-    body: 'Brainiac analiza cada mensaje y extrae la intención, el contexto y las entidades relevantes.',
-  },
-  {
-    n: '03',
-    title: 'Decidir',
-    body: 'La IA determina la mejor acción según reglas de negocio, historial y datos en tiempo real.',
-  },
-  {
-    n: '04',
-    title: 'Ejecutar',
-    body: 'Se dispara la acción automáticamente: responde, actualiza sistemas, deriva al equipo correcto.',
-  },
-  {
-    n: '05',
-    title: 'Aprender',
-    body: 'Cada interacción mejora el modelo. Simple aprende de tu negocio de forma continua.',
-  },
-]
+const ease = [0.16, 1, 0.3, 1]
 
 export default function Solution() {
+  const { t } = useLang()
+  const [active, setActive] = useState(0)
+  const steps = t.solution.steps
+
+  useEffect(() => {
+    const timer = setInterval(() => setActive(a => (a + 1) % steps.length), 4000)
+    return () => clearInterval(timer)
+  }, [steps.length])
+
+  const step = steps[active]
+  const progress = ((active + 1) / steps.length) * 100
+
   return (
-    <section id="flujo" className="py-20 bg-white">
-      <div className="max-w-[1160px] mx-auto px-5">
+    <section id="flujo" className="relative overflow-hidden py-14 md:py-20 bg-surface-muted">
+      <div className="hero-waves pointer-events-none" aria-hidden="true" />
+      <FlowBackdrop variant="light" opacity={0.12} />
+      <div className="relative z-[1] max-w-[1080px] mx-auto px-4 sm:px-6 min-w-0">
 
         <motion.div
-          className="max-w-[580px] mb-12"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.58 }}
+          transition={{ duration: 0.45 }}
         >
-          <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[11px] font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-            Cómo funciona
-          </div>
-          <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-bold tracking-[-0.025em] leading-tight text-[#0f1a2b] mb-4">
-            Del mensaje a la acción en segundos
-          </h2>
-          <p className="text-[0.975rem] text-[#3c4f65] leading-relaxed">
-            Simple orquesta cada interacción en cinco pasos que transforman
-            conversaciones en resultados de negocio concretos.
-          </p>
+          <SectionHeader
+            center
+            eyebrow={t.solution.eyebrow}
+            title={t.solution.h2Before}
+            titleHighlight={t.solution.h2Highlight}
+            titleAfter={t.solution.h2After}
+            para={t.solution.para}
+          />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-          {STEPS.map((s, i) => (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.48, delay: i * 0.08 }}
-              className="flex flex-col p-6 rounded-xl border border-[#e2eaf3] bg-white hover:shadow-[0_8px_28px_rgba(15,26,43,0.09)] hover:-translate-y-1 transition-all duration-200"
-            >
-              <span className="w-9 h-9 flex items-center justify-center shrink-0 rounded-lg bg-blue-50 text-blue-600 text-xs font-bold mb-5">
-                {s.n}
-              </span>
-              <h3 className="text-[0.96rem] font-semibold text-[#0f1a2b] mb-2 leading-snug">{s.title}</h3>
-              <p className="text-[0.86rem] text-[#6b7f96] leading-relaxed m-0">{s.body}</p>
-            </motion.article>
-          ))}
+        <div className="max-w-[880px] mx-auto mb-6">
+          <div className="h-1 rounded-full bg-border overflow-hidden">
+            <motion.div
+              className="h-full bg-accent rounded-full"
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.6, ease }}
+            />
+          </div>
+        </div>
+
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,320px)] gap-8 lg:gap-12 items-start max-w-[880px] mx-auto">
+          <div className="order-2 lg:order-1 min-w-0">
+            <p className="text-xs font-medium text-text-muted uppercase tracking-wide mb-4 text-center lg:text-left">
+              {t.solution.flowLabel}
+            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={{ duration: 0.35, ease }}
+              >
+                <Card highlight className="p-5 sm:p-6">
+                  <span className="inline-flex w-8 h-8 items-center justify-center rounded-full bg-accent text-white text-xs font-semibold mb-3">
+                    {String(active + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">{step.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed m-0">{step.body}</p>
+                </Card>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="order-1 lg:order-2 min-w-0">
+            <ConnectionFlow
+              nodes={t.solution.connectionNodes}
+              variant="light"
+              layout="v"
+              activeIndex={active}
+            />
+          </div>
         </div>
       </div>
     </section>

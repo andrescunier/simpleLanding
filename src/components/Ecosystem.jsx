@@ -1,113 +1,70 @@
-import { motion } from 'framer-motion'
+import Icon from './Icons'
+import { useLang } from '../i18n'
+import SectionHeader from './ui/SectionHeader'
+import Card from './ui/Card'
+import FlowBackdrop from './FlowBackdrop'
 
-const CATEGORIES = [
-  {
-    icon: '⚡',
-    label: 'Módulos',
-    color: 'border-blue-400/30 bg-blue-500/[0.04]',
-    dot: 'bg-blue-500',
-    badgeCls: 'border-blue-200 bg-blue-50 text-blue-700 hover:border-blue-300 hover:bg-blue-100',
-    items: [
-      'Ventas', 'Soporte', 'Cobranza', 'Onboarding', 'Reportes', 'Logística',
-      'Proveedores', 'RR.HH.', 'Marketing', 'Inventario', 'Facturación',
-      'Compras', 'Post-venta', 'Mesa de Ayuda', 'Finanzas', 'Auditoría',
-    ],
-  },
-  {
-    icon: '📡',
-    label: 'Canales',
-    color: 'border-emerald-400/30 bg-emerald-500/[0.04]',
-    dot: 'bg-emerald-500',
-    badgeCls: 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:border-emerald-300 hover:bg-emerald-100',
-    items: [
-      'WhatsApp', 'Instagram', 'Facebook Messenger', 'Telegram', 'SMS',
-      'Email', 'Web Chat', 'Voz', 'Formularios', 'Mercado Libre',
-      'Amazon', 'Correo Argentino', 'OCA', 'Andreani', 'TikTok',
-      'LinkedIn', 'Slack', 'Microsoft Teams',
-    ],
-  },
-  {
-    icon: '🔗',
-    label: 'Integraciones',
-    color: 'border-violet-400/30 bg-violet-500/[0.04]',
-    dot: 'bg-violet-500',
-    badgeCls: 'border-violet-200 bg-violet-50 text-violet-700 hover:border-violet-300 hover:bg-violet-100',
-    items: [
-      'Tango Gestión', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre',
-      'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify',
-      'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic',
-    ],
-  },
-  {
-    icon: '🧠',
-    label: 'Modelos de IA',
-    color: 'border-cyan-400/30 bg-cyan-500/[0.04]',
-    dot: 'bg-cyan-500',
-    badgeCls: 'border-cyan-200 bg-cyan-50 text-cyan-700 hover:border-cyan-300 hover:bg-cyan-100',
-    items: [
-      'GPT-4o', 'o3', 'Claude 3.7 Sonnet', 'Claude 3.5 Haiku',
-      'Gemini 2.0 Flash', 'Gemini 1.5 Pro', 'Grok 2', 'Grok 3',
-      'Llama 3.3', 'Mistral Large', 'Command R+', 'DeepSeek V3',
-    ],
-  },
-]
+const CATEGORY_ICONS = ['bolt', 'antenna', 'link', 'brain']
+
+function IntegrationsMarquee({ items }) {
+  return (
+    <div className="marquee-mask overflow-hidden mb-12">
+      <div className="flex gap-2 w-max" style={{ animation: 'marquee 45s linear infinite' }}>
+        {[...items, ...items].map((item, i) => (
+          <span
+            key={`${item}-${i}`}
+            className="shrink-0 px-3 py-1.5 rounded-md border border-border bg-white text-text-secondary text-sm font-medium whitespace-nowrap"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function Ecosystem() {
+  const { t } = useLang()
+  const marqueeItems = [...new Set([...t.ecosystem.categories[1].items, ...t.ecosystem.categories[2].items])]
+
   return (
-    <section id="modulos" className="py-20 bg-[#f4f8fc]">
-      <div className="max-w-[1160px] mx-auto px-5">
+    <section id="modulos" className="relative overflow-hidden py-14 md:py-20 bg-surface-muted">
+      <FlowBackdrop variant="light" opacity={0.18} />
+      <div className="relative z-[1] max-w-[1080px] mx-auto px-4 sm:px-6 min-w-0">
 
-        <motion.div
-          className="max-w-[580px] mb-12"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.58 }}
-        >
-          <div className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[11px] font-semibold tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-            Ecosistema
-          </div>
-          <h2 className="text-[clamp(1.8rem,3vw,2.6rem)] font-bold tracking-[-0.025em] leading-tight text-[#0f1a2b] mb-4">
-            Módulos para cada área de tu empresa
-          </h2>
-          <p className="text-[0.975rem] text-[#3c4f65] leading-relaxed">
-            Simple se adapta a tu negocio. Activá los módulos que necesitás hoy
-            y sumá más a medida que crecés.
-          </p>
-        </motion.div>
+        <SectionHeader
+          eyebrow={t.ecosystem.eyebrow}
+          title={t.ecosystem.h2}
+          para={t.ecosystem.para}
+          className="mb-12"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {CATEGORIES.map((cat, i) => (
-            <motion.div
-              key={cat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`rounded-2xl border p-6 ${cat.color}`}
-            >
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="text-xl leading-none">{cat.icon}</span>
-                <span className="text-[11px] font-bold text-[#3c4f65] uppercase tracking-[0.1em]">{cat.label}</span>
-                <span className="ml-auto text-[10px] text-[#9baab8] font-medium">{cat.items.length} disponibles</span>
+        <IntegrationsMarquee items={marqueeItems} />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {t.ecosystem.categories.map((cat, i) => (
+            <Card key={cat.label} className="p-5 sm:p-6 min-w-0">
+              <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                <span className="w-7 h-7 flex items-center justify-center rounded-md bg-surface-muted text-text-secondary">
+                  <Icon name={CATEGORY_ICONS[i]} className="w-4 h-4" />
+                </span>
+                <span className="text-xs font-medium text-text-secondary uppercase tracking-wide">{cat.label}</span>
+                <span className="sm:ml-auto text-xs text-text-muted">{cat.items.length} {t.ecosystem.available}</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {cat.items.map(item => (
                   <span
                     key={item}
-                    className={`px-3 py-1 rounded-full border text-[0.78rem] font-medium cursor-default transition-all ${cat.badgeCls}`}
+                    className="px-2.5 py-1 rounded-md border border-border bg-white text-xs text-text-secondary"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </Card>
           ))}
         </div>
-
       </div>
     </section>
   )
 }
-
