@@ -107,8 +107,8 @@ export default function Actors() {
               >
                 <Avatar actor={a} size="md" />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-medium text-white leading-tight truncate">{a.name}</span>
-                  <span className="block text-xs text-white/45 mt-0.5 truncate">{a.role}</span>
+                  <span className="block text-sm font-medium text-white leading-tight break-words">{a.name}</span>
+                  <span className="block text-xs text-white/45 mt-0.5 leading-snug break-words">{a.role}</span>
                 </span>
               </button>
             )
