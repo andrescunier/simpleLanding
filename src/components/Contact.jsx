@@ -15,11 +15,16 @@ export default function Contact() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const text = `Nueva consulta desde simplelanding.com%0ANombre: ${form.name}%0AEmail: ${form.email}%0AEmpresa: ${form.company}%0ADesafío: ${form.challenge}`
+    const text = [
+      'Nueva consulta desde simple.cumar.com.ar',
+      `Nombre: ${form.name}`,
+      `Email: ${form.email}`,
+      `Empresa: ${form.company || '-'}`,
+      `Desafío: ${form.challenge}`,
+    ].join('\n')
     try {
-      await fetch('https://n8n.cumar.com.ar/webhook/whatsapp', {
+      await fetch('/api/contact', {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ number: '5491170303709', text }),
       })
