@@ -143,7 +143,7 @@ export const es = {
       {
         id: 'actors',
         title: 'Actores',
-        desc: 'Perfiles listos (Andi, Francisco, Nicolás, Mateo) más catálogo de roles operativos. Personalidad configurable por canal e industria.',
+        desc: 'Perfiles listos (Andi, Francisco, Nicolás, Mateo, Hermes) más catálogo de roles operativos. Personalidad configurable por canal e industria.',
       },
       {
         id: 'brainiac',
@@ -253,7 +253,7 @@ export const es = {
 
   actors: {
     eyebrow: 'Actores',
-    h2Before: 'Cuatro perfiles. ',
+    h2Before: 'Cinco perfiles. ',
     h2Highlight: 'Una plataforma.',
     h2After: '',
     hubTitle: 'Conectados a todos tus canales',
@@ -261,7 +261,7 @@ export const es = {
     hubCta: 'Conocer los actores',
     hubCenter: 'Actores',
     hubSub: 'Simple',
-    para: 'Andi, Francisco, Nicolás y Mateo son actores con personalidad configurable — tono, empatía y nivel de aserción por canal e industria. Vienen con Simple: no se contratan por separado. Trabajan con tus datos reales y conviven en flujos con personas de tu equipo.',
+    para: 'Andi, Francisco, Nicolás, Mateo y Hermes son actores con personalidad configurable — tono, empatía y nivel de aserción por canal e industria. Vienen con Simple: no se contratan por separado. Trabajan con tus datos reales y conviven en flujos con personas de tu equipo.',
     personalityLabel: 'Personalidad',
     personalityNote: 'Tono, empatía y aserción por canal',
     platformCta: 'Solicitar demo',
@@ -420,6 +420,40 @@ export const es = {
           about: 'Meticuloso y discreto. Aparece solo cuando falta algo. Lo que no está documentado, no existe.',
         },
       },
+      {
+        id: 'hermes',
+        name: 'Hermes',
+        badge: 'Ingeniería',
+        role: 'Ejecuta tareas técnicas a demanda',
+        tagline: 'Pedilo por chat, él lo resuelve',
+        bio: 'Hermes es el ingeniero del equipo: le pedís una tarea técnica en lenguaje natural y la ejecuta — cruza datos, genera reportes, corre procesos o ajusta configuraciones. Trabaja en segundo plano y avisa cuando terminó.',
+        personality: ['Resolutivo', 'Técnico', 'Incansable'],
+        capabilities: [
+          'Recibe pedidos técnicos en lenguaje natural, por WhatsApp o chat',
+          'Ejecuta trabajos largos en segundo plano y avisa al terminar',
+          'Automatiza datos, reportes, integraciones e infraestructura',
+        ],
+        contextBadge: 'Tarea técnica',
+        context: 'Dirección · WhatsApp',
+        messages: [
+          { from: 'user', text: 'Hermes, cruzame las ventas de la semana con el stock y decime qué conviene reponer.' },
+          { from: 'actor', text: 'Dale, lo proceso ahora. Te aviso en unos minutos por acá.' },
+          { from: 'system', text: 'Trabajo en ejecución · Consultando ventas y stock' },
+          { from: 'actor', text: 'Listo: 14 productos con quiebre proyectado esta semana. Los críticos son X14, A20 y B7. Te dejé el detalle en el dashboard y un borrador de orden de compra.' },
+        ],
+        page: {
+          hi: 'Hermes',
+          subtitle: 'Ingeniería',
+          heroText: 'Recibe pedidos técnicos en lenguaje natural, los ejecuta en segundo plano y responde con el resultado por el mismo canal. Lo que antes esperaba en la cola de un desarrollador, ahora se pide por chat.',
+          how: [
+            { title: 'Entiende el pedido', desc: 'Le hablás como a una persona: sin tickets, sin formularios, sin sintaxis especial.' },
+            { title: 'Ejecuta en segundo plano', desc: 'Las tareas largas corren como trabajos supervisados; vos seguís con lo tuyo.' },
+            { title: 'Responde con el resultado', desc: 'Devuelve el dato, el reporte o la confirmación por el mismo canal donde se lo pediste.' },
+            { title: 'Deja todo trazado', desc: 'Cada trabajo queda registrado: qué se pidió, qué se ejecutó y qué devolvió.' },
+          ],
+          about: 'Resolutivo y técnico. No promete: ejecuta, mide y muestra el resultado.',
+        },
+      },
     ],
   },
 
@@ -470,6 +504,7 @@ export const es = {
       { sector: 'Retail Electrónica', body: 'Unificación de inventarios entre canales, gestión automática de RMA y análisis de leads para el equipo comercial.', tags: ['Inventario', 'RMA', 'Leads'] },
       { sector: 'Hotelería & Spa', body: 'Reservas automatizadas y gestión de disponibilidad en tiempo real, directo desde redes sociales y WhatsApp.', tags: ['Reservas', 'Disponibilidad', 'Redes sociales'] },
       { sector: 'Servicios Financieros', body: 'Detección temprana de riesgo de churn y priorización inteligente de cobranzas con el motor predictivo de Brainiac.', tags: ['Churn', 'Cobranzas', 'Predicción'] },
+      { sector: 'Ecommerce multi-marca', body: 'Cinco tiendas online de un mismo grupo sobre una única plataforma multi-tenant: catálogo, checkout, envíos y post-venta unificados, con reglas propias por marca.', tags: ['Multi-tenant', 'Checkout', 'Post-venta'] },
     ],
   },
 
@@ -489,7 +524,7 @@ export const es = {
       },
       {
         label: 'Integraciones',
-        items: ['Tango Gestión', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre', 'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify', 'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic'],
+        items: ['Tango Gestión', 'Xubio', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre', 'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify', 'Chatwoot', 'Evolution API', 'Superset', 'Cloudflare', 'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic'],
       },
       {
         label: 'Modelos de IA',
@@ -708,7 +743,7 @@ export const en = {
       {
         id: 'actors',
         title: 'Actors',
-        desc: 'Ready-made profiles (Andi, Francisco, Nicolás, Mateo) plus an operational role catalog. Configurable personality per channel and industry.',
+        desc: 'Ready-made profiles (Andi, Francisco, Nicolás, Mateo, Hermes) plus an operational role catalog. Configurable personality per channel and industry.',
       },
       {
         id: 'brainiac',
@@ -818,7 +853,7 @@ export const en = {
 
   actors: {
     eyebrow: 'Actors',
-    h2Before: 'Four profiles. ',
+    h2Before: 'Five profiles. ',
     h2Highlight: 'One platform.',
     h2After: '',
     hubTitle: 'Connected to every channel',
@@ -826,7 +861,7 @@ export const en = {
     hubCta: 'Meet the actors',
     hubCenter: 'Actors',
     hubSub: 'Simple',
-    para: 'Andi, Francisco, Nicolás and Mateo are actors with configurable personality — tone, empathy and assertiveness per channel and industry. They come with Simple: you do not hire them separately. They work with your real data and share workflows with people on your team.',
+    para: 'Andi, Francisco, Nicolás, Mateo and Hermes are actors with configurable personality — tone, empathy and assertiveness per channel and industry. They come with Simple: you do not hire them separately. They work with your real data and share workflows with people on your team.',
     personalityLabel: 'Personality',
     personalityNote: 'Tone, empathy and assertiveness per channel',
     platformCta: 'Request a demo',
@@ -985,6 +1020,40 @@ export const en = {
           about: 'Meticulous and discreet. Shows up only when something is missing. If it is not documented, it does not exist.',
         },
       },
+      {
+        id: 'hermes',
+        name: 'Hermes',
+        badge: 'Engineering',
+        role: 'Runs technical tasks on demand',
+        tagline: 'Ask over chat, he gets it done',
+        bio: 'Hermes is the engineer on the team: you ask for a technical task in plain language and he executes it — crossing data, generating reports, running processes or adjusting configurations. He works in the background and pings you when it is done.',
+        personality: ['Resourceful', 'Technical', 'Tireless'],
+        capabilities: [
+          'Takes technical requests in plain language, over WhatsApp or chat',
+          'Runs long jobs in the background and notifies you when done',
+          'Automates data, reports, integrations and infrastructure',
+        ],
+        contextBadge: 'Technical task',
+        context: 'Management · WhatsApp',
+        messages: [
+          { from: 'user', text: "Hermes, cross this week's sales with stock and tell me what to restock." },
+          { from: 'actor', text: "On it — I'll ping you here in a few minutes." },
+          { from: 'system', text: 'Job running · Querying sales and stock' },
+          { from: 'actor', text: 'Done: 14 products projected to run out this week. The critical ones are X14, A20 and B7. Details are on the dashboard, plus a draft purchase order.' },
+        ],
+        page: {
+          hi: 'Hermes',
+          subtitle: 'Engineering',
+          heroText: 'Takes technical requests in plain language, runs them in the background and replies with the result on the same channel. What used to wait in a developer queue is now one chat message away.',
+          how: [
+            { title: 'Understands the request', desc: 'You talk to him like a person: no tickets, no forms, no special syntax.' },
+            { title: 'Runs in the background', desc: 'Long tasks run as supervised jobs while you get on with your day.' },
+            { title: 'Replies with the result', desc: 'Returns the data, the report or the confirmation on the channel you asked from.' },
+            { title: 'Leaves a full trace', desc: 'Every job is recorded: what was asked, what ran and what it returned.' },
+          ],
+          about: 'Resourceful and technical. He does not promise: he executes, measures and shows the result.',
+        },
+      },
     ],
   },
 
@@ -1035,6 +1104,7 @@ export const en = {
       { sector: 'Electronics Retail', body: 'Unified inventory across channels, automated RMA handling and lead analysis for the sales team.', tags: ['Inventory', 'RMA', 'Leads'] },
       { sector: 'Hospitality & Spa', body: 'Automated bookings and real-time availability management, straight from social media and WhatsApp.', tags: ['Bookings', 'Availability', 'Social media'] },
       { sector: 'Financial Services', body: "Early churn-risk detection and intelligent collections prioritization with Brainiac's predictive engine.", tags: ['Churn', 'Collections', 'Prediction'] },
+      { sector: 'Multi-brand ecommerce', body: 'Five online stores from the same group on a single multi-tenant platform: unified catalog, checkout, shipping and after-sales, with per-brand rules.', tags: ['Multi-tenant', 'Checkout', 'After-sales'] },
     ],
   },
 
@@ -1054,7 +1124,7 @@ export const en = {
       },
       {
         label: 'Integrations',
-        items: ['Tango Gestión', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre', 'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify', 'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic'],
+        items: ['Tango Gestión', 'Xubio', 'SAP', 'Salesforce', 'VTEX', 'Mercado Libre', 'Google Cloud', 'HubSpot', 'Odoo', 'WooCommerce', 'Shopify', 'Chatwoot', 'Evolution API', 'Superset', 'Cloudflare', 'N8N', 'Make', 'Zapier', 'Google Workspace', 'OpenAI', 'Anthropic'],
       },
       {
         label: 'AI Models',

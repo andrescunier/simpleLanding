@@ -91,7 +91,7 @@ export default function Actors() {
           <ChannelHub centerLabel={t.actors.hubCenter} sublabel={t.actors.hubSub} />
         </div>
 
-        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-8">
+        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3 mb-8">
           {actors.map(a => {
             const isSelected = a.id === selectedId
             return (

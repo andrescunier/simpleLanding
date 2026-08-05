@@ -47,7 +47,7 @@ export default function UseCases() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-w-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 min-w-0">
           {t.useCases.cases.map((c, i) => (
             <Card key={i} className="p-6 flex flex-col">
               <h4 className="text-base font-medium text-text-primary mb-3 leading-snug">{c.sector}</h4>

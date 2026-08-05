@@ -72,7 +72,7 @@ export default function ActorPage({ actor }) {
       <section className="py-12 md:py-16 border-t border-border-dark">
         <div className="max-w-[720px] mx-auto px-4 sm:px-6">
           <h2 className="text-lg font-semibold text-white mb-6">{labels.othersTitle}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {others.map(a => (
               <a
                 key={a.id}
